@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
+      </ul>
+      <form class="d-flex ms-auto">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-success">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Alert -->
+<div class="container mt-3">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    ประกาศ!!! ร้านจะหยุดทำชั่วคราวในวันที่ 31 ธ.ค. – 7 ม.ค. สวัสดีปีใหม่
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+      <li class="breadcrumb-item"><a href="#">หมวดหมู่สินค้า</a></li>
+     <li class="breadcrumb-item"><a href="#">ชื่อสินค้า</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- Product Section -->
+<div class="container mb-5">
+  <div class="row">
+
+    <!-- Carousel -->
+    <div class="col-md-6">
+      <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+ <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://cdn.shopify.com/s/files/1/0016/4416/7203/files/38-DI-Free-Gift-in-Dec-25-ZV-E10M2-BQ.jpg?v=1764560843" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://cdn.shopify.com/s/files/1/0016/4416/7203/files/Master_Template_DI_CB_ZVE10II.jpg?v=1764560843" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://cdn.shopify.com/s/files/1/0016/4416/7203/files/CX89300_wh_WEBPOP_inch_240612_eb965edd-d75d-48a8-b69b-838d5d34fb86.jpg?v=1764560843" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-6">
+      <h3>กล้อง Vlog ZV-E10 II<span class="badge bg-secondary">ใหม่</span></h3>
+
+      <!-- Rating + icons -->
+      <div class="mb-2">
+        ⭐⭐⭐⭐⭐ 5.0 (32 รีวิว)
+        <span class="ms-3">🔗</span>
+        <span class="ms-2">❤</span>
+      </div>
+
+      <h4 class="text-danger">32,990.00</h4>
+
+      <!-- Input group -->
+      <label class="form-label">จำนวน</label>
+      <div class="input-group mb-3" style="width: 150px;">
+        <button class="btn btn-outline-secondary">-</button>
+        <input type="text" class="form-control text-center" value="1">
+        <button class="btn btn-outline-secondary">+</button>
+      </div>
+        <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">เลือกรุ่นของคุณ: ZV-E10M2W/PK1 <span class="text-danger">*</span></label>
+                    <select class="form-select" required>
+                        <option value="">V-E10M2 (Body Only): ตัวกล้องเปล่า</option>
+                        <option>ZV-E10M2K (Body + Lens Kit): ตัวกล้องพร้อมเลนส์ Power Zoom 16-50mm F3.5-5.6 OSS II</option>
+                    </select>
+                </div>
+        </div>
+      <button class="btn btn-dark w-100">ใส่ตะกร้าสินค้า</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Accordion + Card Section -->
+<div class="container mb-5">
+  <div class="row">
+
+    <!-- Accordion -->
+    <div class="col-md-8">
+      <h5>Product Details</h5>
+      <div class="accordion" id="productDetails">
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#detail1">
+              รายละเอียดสินค้า
+            </button>
+          </h2>
+          <div id="detail1" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                เซนเซอร์ Exmor R CMOS รูปแบบ APS-C ที่มี 26.0 เมกะพิกเซล11
+              ระบบประมวลผลภาพ BIONZ XR เพื่อมอบฟุตเทจ 4K อันน่าทึ่งที่สูงสุด 60p13
+             ลุคสร้างสรรค์และการตั้งค่า Vlog ภาพยนตร์เพื่อมอบอิสระในการสื่ออารมณ์ได้มากยิ่งขึ้น
+             AF ตรวจจับระยะห่างของระนาบโฟกัส 759 จุด17 ที่มีความหนาแน่นสูงเพื่อการโฟกัสที่สม่ำเสมอและแม่นยำ
+            UI ที่ใช้งานง่าย การถ่ายแนวตั้ง และการเชื่อมต่อ 5 GHz26 เพื่อการแชร์ที่ง่ายดาย<br>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#detail2">
+              คุณสมบัติสินค้า
+            </button>
+          </h2>
+          <div id="detail2" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              เซนเซอร์ Exmor R™ CMOS 
+              ระบบประมวลผลภาพ BIONZ XR™ ล่าสุด <br>
+              เลนส์แบบเปลี่ยนได้เพื่อจับภาพตามที่คุณจินตนาการ <br> 
+               โทนสีผิวที่คมชัดสวยงาม AF <br> 
+               ตรวจจับระยะห่างของระนาบโฟกัส 759 จุดที่มีความหนาแน่นสูง <br> 
+             การใช้งานแบบสัมผัสสำหรับการถ่ายแนวตั้ง แนวนอน หรือเซลฟี่<br> 
+             คุณสมบัติการเข้าถึงที่ครอบคลุม  <br> 
+             การติดตามวัตถุที่แม่นยำด้วยระบบโฟกัสดวงตาแบบเรียลไทม์ <br>  
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Card (Sponsored Products) -->
+   <div class="card" style="width: 18rem;">
+  <img src="https://sony.scene7.com/is/image/sonyglobalsolutions/slide1_Mobile_white?$productIntroPlatemobile$&fmt=png-alpha" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">สินค้าที่คล้ายกัน</h5>
+    <p class="card-text">กล้อง Vlog ZV-E10</p>
+    <p class="card-text">21,590 บาท</p>
+    <a href="#" class="btn btn-primary">ซื้อ</a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
