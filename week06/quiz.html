@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #ea5e4e;
+            --icon-teal: #50b6b2;
+            --text-dark: #333;
+            --text-grey: #777;
+            --star-yellow: #f4c242;
+            --bg-grey: #f5f6fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Container simulation */
+        .app-container {
+            width: 100%;
+            max-width: 414px; /* Standard mobile width */
+            background-color: white;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            height: 100vh;
+            padding-bottom: 80px; /* Space for bottom bar */
+        }
+
+        /* Header Image Section */
+        .hero-section {
+            position: relative;
+            height: 220px;
+            background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); /* Brick wall room placeholder */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Floating Info Card */
+        .info-card {
+            background: white;
+            width: 90%;
+            margin: -60px auto 0;
+            position: relative;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .info-card h1 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: var(--star-yellow);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .info-card p {
+            font-size: 0.8rem;
+            color: var(--text-grey);
+            line-height: 1.4;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 20px;
+        }
+
+        /* Review Badge */
+        .review-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .rating-badge {
+            background-color: var(--primary-red);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-right: 15px;
+        }
+
+        .rating-text h3 {
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .rating-text span {
+            color: var(--text-grey);
+            font-size: 0.85rem;
+        }
+
+        /* Generic Section Styling */
+        .section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        p.desc {
+            font-size: 0.85rem;
+            color: var(--text-grey);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* Amenities Icons */
+        .amenities {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .amenity-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--icon-teal);
+        }
+
+        .amenity-item i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .amenity-item span {
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        /* Map */
+        .map-container {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #e6f7ff;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/OpenStreetMap_Logo_2011.svg/1024px-OpenStreetMap_Logo_2011.svg.png'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Simulating map view */
+        .map-overlay {
+            width: 100%; height: 100%;
+            background: url('https://mt1.google.com/vt/lyrs=m&x=130&y=95&z=9'); /* Generic tile */
+            background-size: cover;
+        }
+
+        /* Room Type Card */
+        .room-card {
+            display: flex;
+            gap: 15px;
+        }
+
+        .room-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .room-details h3 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .room-price {
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .room-alert {
+            font-size: 0.75rem;
+            color: #50b6b2; /* Using teal for the alert */
+        }
+
+        /* Sticky Footer */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 414px;
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            z-index: 100;
+        }
+
+        .footer-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .f-price {
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .f-label {
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .book-btn {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(234, 94, 78, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="hero-section">
+            <div class="top-nav">
+                <i class="fas fa-arrow-left"></i>
+                <i class="far fa-images"></i>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h1>Hilton San Francisco</h1>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p>Facilities provided may range from a modest quality mattress in a small room to large suites</p>
+        </div>
+
+        <div class="content">
+            <div class="review-row">
+                <div class="rating-badge">9.5</div>
+                <div class="rating-text">
+                    <h3>Excellent</h3>
+                    <span>See 801 reviews</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Hotel Description</h2>
+                <p class="desc">218 Austen Mountain, consectetur adipiscing, sed eiusmod tempor incididunt ut labore et dolore</p>
+                
+                <div class="amenities">
+                    <div class="amenity-item">
+                        <i class="fas fa-wifi"></i>
+                        <span>wifi</span>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>coffee</span>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-bath"></i>
+                        <span>bath</span>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-car"></i>
+                        <span>car</span>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-paw"></i>
+                        <span>paw</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Location</h2>
+                <p class="desc">218 Austen Mountain, consectetur adipiscing, sed do eiusmod tempor incididunt ut labore et .</p>
+                <div class="map-container">
+                     <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=San+Francisco&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        style="opacity: 0.8; pointer-events: none;">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="section" style="border-bottom: none;">
+                <h2>Room Type</h2>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Room" class="room-img">
+                    <div class="room-details">
+                        <h3>Standard Twin Room</h3>
+                        <div class="room-price">$399.99</div>
+                        <div class="room-alert">Hurry Up! This is your last room!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="footer-price">
+                <span class="f-price">$399.99</span>
+                <span class="f-label">AVG/Night</span>
+            </div>
+            <button class="book-btn">Book Now</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
